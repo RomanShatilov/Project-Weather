@@ -1,0 +1,42 @@
+//MAIN PADDING
+$main-padding                 : 59px;
+$main-padding-mobile          : 49px;
+
+//MEDIA SIZES
+$tablet-screen                : 1024px;
+$mobile-wide-screen           : 768px;
+$mobile-screen                : 560px;
+
+//FONTS
+$SegoeUI                       : 'Segoe UI', sans-serif;
+$Bahnschrift                   : 'Bahnschrift', sans-serif;
+$Bahnschrift-bold              : 'Bahnschrift Bold', sans-serif;
+
+//FONTS SIZE
+
+$font-big                      : calc(20px + 1.62vw); // 55px
+$font-big                      : 46px; // 46px
+$font-medium                   : calc(20px + .32vw);  // 25px
+$font-regular                  : calc(14px + .32vw);  // 19px
+$font-small                    : calc(14px + .13vw);  // 16px
+
+//MARGINS
+
+$margin-large                  : calc(30px + 2.6vw); // 80px
+$margin-large-medium           : calc(15px + 1.82vw); // 50px
+$margin-large-medium           : 50px; // 50px
+$margin-big                    : calc(15px + 1.3vw); // 40px
+$margin-big                    : 40px; // 40px
+$margin-medium                 : 20px; // 20px
+
+//COLORS
+
+$color-black                   : #000000;
+$color-white                   : #ffffff;
+$color-gray-dark               : #181818;
+$color-gray-light              : #707070;
+$color-red                     : #EB5151;
+
+//TRANSITION
+
+$transition-regular            : 0.3s ease-in-out;
