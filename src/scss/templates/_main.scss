@@ -1,0 +1,14 @@
+body{
+  background-color: $color-main;
+  .theme--light{
+    width: 100%;
+    &.v-application{
+      width: 100%;
+      background-color: $color-main;
+    }
+  }
+}
+
+.mb-10-custom{
+  margin-bottom: 10px;
+}
