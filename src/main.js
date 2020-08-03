@@ -1,37 +1,25 @@
-// Import Vue
-import Vue from 'vue';
-import VueRouter from 'vue-router';
-import {i18n} from './plugins/i18n';
+import Vue from 'vue'
+import App from './App.vue'
+import vuetify from './plugins/vuetify';
+import router from './router';
+import store from './store';
+import axios from 'axios';
+import VueAxios from 'vue-axios';
+import VueGeolocation from 'vue-browser-geolocation';
+import style from './scss/index.scss';
 
-// Import Vue App, routes, store
-import App from './App';
-import routes from './routes';
-
-Vue.use(VueRouter);
-
-// Configure router
-const router = new VueRouter({
-  routes,
-  i18n,
-  linkActiveClass: 'active',
-  mode: 'history',
-});
+Vue.config.productionTip = false;
+Vue.use(
+    VueGeolocation,
+    style
+);
 
 new Vue({
-  el: '#root',
+  vuetify,
   router,
-  i18n,
-  data: {
-
-  },
-  components: {
-  },
-  mounted() {
-
-  },
-
-  methods: {
-
-  },
-  render: h => h(App),
-});
+  store,
+  VueAxios,
+  axios,
+  VueGeolocation,
+  render: h => h(App)
+}).$mount('#app')

@@ -1,9 +1,24 @@
-# Project "Weather"
+# webpack-weather
 
-* To install project run "npm i" via terminal from the project folder
+## Project setup
+```
+npm install
+```
 
-* To run server run "npm run dev" via terminal
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
 
-* To build project run "npm run build" via terminal
+### Compiles and minifies for production
+```
+npm run build
+```
 
-* To change texts on web site go to "plugins/lang/..." and choose needed language
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
