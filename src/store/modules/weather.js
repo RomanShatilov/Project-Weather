@@ -16,8 +16,6 @@ const getTime = (unix) => {
 };
 
 const setData = (response) => {
-  // this.current.temp = Math.floor((response.data.main.temp - 273.15) * 10) / 10,
-  // let current = {};
   let current = {};
   current.temp = Math.floor(response.data.main.temp - 273.15);
   current.cityName = response.cityName;
@@ -29,7 +27,6 @@ const setData = (response) => {
   current.weather = `http://openweathermap.org/img/w/${response.data.weather[0].icon}.png`;
   current.id = response.data.id;
   current.name = response.data.name;
-  // this.getDailyWeather();
 
   return current;
 };
@@ -141,6 +138,18 @@ export default {
       ctx.commit('setLocation', savedLocations)
 
     },
+    getCurrentSavedLocation(ctx){
+      let savedLocations = [];
+
+      if(localStorage.location){
+        savedLocations = JSON.parse(localStorage.location);
+      } else {
+        savedLocations = [];
+      }
+
+      ctx.commit('setCurrentLocation', savedLocations)
+
+    },
 
     createSavedLocation(ctx) {
       let savedLocations = [];
@@ -151,7 +160,6 @@ export default {
         savedLocations = [];
       }
 
-      console.log(ctx.state.saveWeather)
       if(localStorage.location) {
         let arr = JSON.parse(localStorage.location);
 
@@ -182,13 +190,17 @@ export default {
     },
     setLocation(state, weather) {
       state.savedWeather = weather
-    }
+    },
+    setCurrentLocation(state, weather) {
+      state.currentSavedWeather = weather
+    },
   },
   state: {
     weather: [],
     dailyWeather: [],
     saveWeather: {},
     savedWeather: [],
+    currentSavedWeather: {},
   },
   getters: {
     viewWeather(state) {
@@ -199,6 +211,9 @@ export default {
     },
     viewSavedWeather(state) {
       return state.savedWeather;
+    },
+    viewCurrentSavedWeather(state) {
+      return state.currentSavedWeather;
     }
   }
 }

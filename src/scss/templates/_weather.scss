@@ -16,6 +16,7 @@
     margin: 0 5px;
 
   }
+
   .temp {
     margin-right: 10px;
   }
@@ -33,26 +34,25 @@
       width: 5px;
       height: 5px;
       border-radius: 100%;
-      border: 1px solid $color-black;
+      border: 1px solid $color-white;
     }
+  }
+
+  .weather__item__wrapper {
+    width: 100%;
   }
 
   .weather__item {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 15px;
+    flex-wrap: wrap;
+    width: 100%;
     border-radius: 20px;
-    background-color: $color-white;
+    background-color: $color-darker-bg;
     box-shadow: 0px 0px 25px 1px rgba(50, 50, 50, 0.1);
 
     &.weather__item_current {
-      position: relative;
-      z-index: 1;
-      display: block;
-      padding: 20px 80px 20px 20px;
-      &:hover{
-        .weather__save{
+      &:hover {
+        .weather__save {
           opacity: .8;
           visibility: visible;
         }
@@ -60,8 +60,22 @@
     }
   }
 
-  .weather__current__top {
+  .weather__current {
+    position: relative;
+    z-index: 1;
+    flex: 1 1 400px;
     display: flex;
+    align-content: space-between;
+    flex-direction: column;
+    padding: 20px 80px 20px 20px;
+    background: linear-gradient( 135deg, #72EDF2 10%, #5151E5 100%);
+    border-radius: 20px;
+  }
+
+  .weather__current__top {
+    flex: 1 1;
+    display: flex;
+    flex-wrap: wrap;
     align-items: center;
   }
 
@@ -106,25 +120,43 @@
 
   .weather__week__title {
     font-weight: bold;
-    font-size: $size-medium;
+    font-size: $size-normal;
+  }
+
+  .weather__week__wrapper {
+    flex: 1 1 60%;
+    padding: 20px;
   }
 
   .weather__week {
-    width: 100%;
     display: grid;
     grid-gap: 10px;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
 
     [icon] {
       width: 60px;
       height: 60px;
+    }
+
+    .weather__item {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      transition: all .4s ease;
+      background-color: $color-dark-bg;
+
+      &:hover {
+        transform: scale(1.05);
+      }
     }
   }
 
   .weather__week__temp {
     display: flex;
   }
-  .weather__save{
+
+  .weather__save {
     position: absolute;
     z-index: 10;
     top: 20px;
@@ -132,14 +164,17 @@
     opacity: .5;
     transition: box-shadow .4s ease, opacity .4s ease,
     opacity .3s ease;
-    &:hover{
+
+    &:hover {
       opacity: 1 !important;
-      .weather__save__info{
+
+      .weather__save__info {
         visibility: visible;
       }
     }
   }
-  .weather__save__icon{
+
+  .weather__save__icon {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -147,14 +182,17 @@
     height: 30px;
     cursor: pointer;
     border-radius: 10px;
+    color: $color-black;
     background-color: $color-main;
     box-shadow: 0 0 5px 5px rgba(0, 0, 0, .2);
-    i{
+
+    i {
       font-size: 16px;
       color: $color-black;
     }
   }
-  .weather__save__info{
+
+  .weather__save__info {
     position: absolute;
     z-index: 1;
     top: calc(100% + 10px);
@@ -164,10 +202,67 @@
     opacity: .8;
     visibility: hidden;
     border-radius: 10px;
+    color: $color-black;
     background-color: $color-white;
     box-shadow: 0 0 5px 5px rgba(0, 0, 0, .1);
     transition: opacity .2s ease, visibility .2s ease;
     font-size: 14px;
     text-align: center;
+  }
+
+  .weather__list {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 20px;
+
+    a {
+      display: block;
+      color: $color-white;
+      text-decoration: none;
+      &:hover {
+        color: $color-black;
+        .weather__item{
+          transform: scale(1.05);
+          box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
+          background-color: $color-white;
+        }
+      }
+    }
+
+    .weather__item {
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border-radius: 10px;
+      transition: all .3s ease;
+
+    }
+
+    .weather__item__temp {
+      display: flex;
+      align-items: center;
+    }
+
+    .temp {
+      font-size: $size-medium;
+    }
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .v-application {
+    .custom-container {
+      padding: 32px 15px !important;
+    }
+  }
+  .weather {
+    .weather__current {
+      flex: 1 1 100%;
+      padding: 20px 40px 20px 20px;
+    }
   }
 }
